@@ -1,0 +1,43 @@
+<html ng-app="mymodule">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+<script src="controller.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!--<link rel="stylesheet" href="filter.css">-->
+</head>
+	<body>
+		<div ng-controller="MyController" class="container">
+			<br/><br/>			
+			<b>Rows to display : </b>
+			<input type="number" min="1" max="5" ng-model="rowCount">
+			<br/><br/>
+			<table class="table table-bordered table-hover">
+				
+				<thead>
+					<tr>
+						<th>Name</th>
+					    <th>DateOfBirth</th>
+					    <th>Gender</th>
+					    <th>Salary(in no.)</th>
+						<th>Salary(Currency)</th>
+					</tr>
+						
+				</thead>
+				
+			    
+			    <tr ng-repeat="employee in employees | limitTo : rowCount">
+					<td>{{employee.name | uppercase}}</td>
+					<td>{{employee.dateOfBirth | date : 'dd/MM/yy'}}</td>
+					<td>{{employee.gender}}</td>
+					<td>{{employee.salary | number : 2}}</td>
+					<td>{{employee.salary | currency : "Rs. "}}</td>
+					
+			    </tr>
+			
+			</table>
+		</div>
+	</body>
+</html>
+
+
